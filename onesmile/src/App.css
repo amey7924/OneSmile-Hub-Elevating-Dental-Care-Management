@@ -1,0 +1,11 @@
+.navbar1 {
+  width: 75%;
+  background-color: #555;
+  overflow: auto;
+}
+.bodycolor {
+  background-image: linear-gradient(hotpink, aqua)
+}
+.color{
+  background-color: rgb(154,208,194)
+}

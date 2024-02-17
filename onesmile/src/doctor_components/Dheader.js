@@ -49,16 +49,16 @@ window.location.reload();
         </a>
          </li>
          <li class=" h4 nav-item ">
-        <a className="nav-link active w-100 p-2" href="/appointments"> Appointments
-        </a>     
+        <Link className="nav-link active w-100 p-2" to="/Dappointmnetspage">  Appointments
+        </Link>     
          </li>
          <li class=" h4 nav-item ">
         <a className="nav-link active w-100 p-2" href="/medicines"> Medicines
         </a>     
          </li>
          <li class=" h4 nav-item ">
-        <a className="nav-link active w-100 p-2" href="/updatprofile"> Update Profile
-        </a>     
+        <Link className="nav-link active w-100 p-2" href="/updatprofile"> Update Profile
+        </Link>     
          </li>
         <li class=" h4 nav-item">
         <a className="nav-link active w-100 p-2" href="/#treatmentspage">

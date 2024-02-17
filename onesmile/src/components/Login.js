@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Cookie from 'js-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Cookies from 'js-cookie';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -15,7 +16,9 @@ export default function Login() {
   }, []);
 
   const handleLogin = () => {
-    if (username.current.value === "user1" && password.current.value === "123") {
+
+
+    if (username.current.value === "sufi" && password.current.value === "123") {
       window.sessionStorage.setItem("abc", "1");
       window.sessionStorage.setItem("loginstore", "1");
       Cookie.set('userlogin', username.current.value, {
@@ -23,7 +26,18 @@ export default function Login() {
         secure: true,
         sameSite: 'strict',
       });
-    } 
+
+      if (Cookies.get("loginbook") == 1) {
+        console.log("login" + Cookie.get('loginbook'));
+        navigate("/");
+      }
+      if (Cookies.get("book_s") == 2) {
+        console.log("login" + Cookie.get('book_s'));
+        navigate("/appointmentspage");
+      }
+
+      // navigate("/appointmentspage")
+    }
     else if (username.current.value === "admin" && password.current.value === "123") {
       window.sessionStorage.setItem("abc", "3");
       Cookie.set('xyz', username.current.value, {

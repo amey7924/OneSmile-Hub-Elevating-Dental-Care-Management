@@ -51,7 +51,7 @@ export default function Adminhome() {
       </div>
       <div className="col">
         <div className="card" style={cardStyle}>
-          <Link to="/userDetails">
+          <Link to="/Userdetailspage">
             <img
               src="https://th.bing.com/th?id=OIP.wRtvON_8JKRQghdROw5QvQHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.1&pid=3.1&rm=2"
               className="card-img-top"
@@ -66,7 +66,7 @@ export default function Adminhome() {
       </div>
       <div className="col">
         <div className="card" style={cardStyle}>
-          <Link to="/medicine-store">
+          <Link to="/Appointmentdetailspage">
             <img
               src="https://th.bing.com/th/id/OIP.BR4bmCAe_QWfi09YzMhiHgHaFW?rs=1&pid=ImgDetMain"
               className="card-img-top"
@@ -81,7 +81,7 @@ export default function Adminhome() {
       </div>
       <div className="col">
         <div className="card" style={cardStyle}>
-          <Link to="/examDetails">
+          <Link to="/Examinationdetailspage">
             <img
               src="https://deangelisfamilydentistry.com/wp-content/uploads/when-your-child-should-have-their-first-dental-appointment-1.jpeg"
               className="card-img-top"

@@ -7,7 +7,7 @@ import img5 from "./images/starCrop4.png";
 export default function Content() {
   return (
     // Crousel Section
-    <div class="container mt-2">
+    <div class="container-fluid">
       <div
         id="carouselExampleAutoplaying"
         class="carousel slide border border-dark"
@@ -54,7 +54,7 @@ export default function Content() {
 
       {/* ABOUT US Section */}
 
-      <div class="container-fluid  mt-2  ">
+      <div class="container  mt-2  ">
         <h1 className="text text-center pb-2" id="aboutpage">About us</h1>
         <div class="row">
           <div class="col-8" >

@@ -50,7 +50,11 @@ export default function Aheader() {
              <li class=" h4 nav-item ">
             <a className="nav-link active w-100 p-2" href="/adminhomepage"> Admin Home
             </a>
-            </li>         
+            </li>
+            <li class=" h4 nav-item ">
+            <a className="nav-link active w-100 p-2" href="/adminhomepage"> Add Doctor
+            </a>
+            </li>           
             <li class=" h4 nav-item">
             <a className="nav-link active w-100 p-2" href="/#treatmentspage">
                     Treatments

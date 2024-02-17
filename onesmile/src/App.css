@@ -4,7 +4,8 @@
   overflow: auto;
 }
 .bodycolor {
-  background-image: linear-gradient(hotpink, aqua)
+  /* background-image: linear-gradient(hotpink, aqua) */
+ background-image: url("../images/loginbackgroud.jpg");
 }
 .color{
   background-color: rgb(154,208,194)

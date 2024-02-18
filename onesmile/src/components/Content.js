@@ -4,6 +4,7 @@ import img2 from "./images/IMG_9734.jpeg";
 import img3 from "./images/img2.jpeg";
 import img4 from "./images/starCrop.png";
 import img5 from "./images/starCrop4.png";
+import Enquirepage from "../admin_components/Enquirepage";
 export default function Content() {
   return (
     // Crousel Section
@@ -274,6 +275,8 @@ export default function Content() {
                 </div>
           </div>
         </div>
+
+        <Enquirepage></Enquirepage>
       </div>
     
   );

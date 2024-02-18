@@ -53,7 +53,7 @@ window.location.reload();
         </Link>     
          </li>
          <li class=" h4 nav-item ">
-        <a className="nav-link active w-100 p-2" href="/medicines"> Medicines
+        <a className="nav-link active w-100 p-2" href="/DoctorMedicinepage"> Medicines
         </a>     
          </li>
          <li class=" h4 nav-item ">

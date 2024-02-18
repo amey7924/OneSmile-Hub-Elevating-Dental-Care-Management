@@ -1,0 +1,124 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+export default function AdminMedicalStore() {
+  const [store, setstore] = useState([]);
+  const [requisition, setrequisition] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8087/store/allstore")
+      .then((response) => {
+        console.log(response.data);
+        setstore(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    axios
+      .get("http://localhost:8087/Requisitions/allrequisition")
+      .then((response) => {
+        console.log(response.data);
+        setrequisition(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const updatestatus = (id) => {
+    alert("hi"+id);
+   
+    axios
+      .put("http://localhost:8087/Requisitions/updatereq/" + id,{
+          rq: "completed",
+          
+        })
+        .then((response) => {
+          alert("requisition updated");
+          window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  return (
+    <>
+      <div className="container mt-3">
+        <div className="row">
+          <div className="d-flex flex-wrap">
+            <div className="col-lg-6">
+              <h3>Medicine Inventory</h3>
+              <div className="table-responsive me-5">
+                <table className="table mt-1">
+                  <thead>
+                    <tr>
+                      <th scope="col">PRODUCT ID</th>
+                      <th scope="col">PRODUCT NAME</th>
+                      <th scope="col">QUANTITY</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {store.map((product) => {
+                      return (
+                        <tr>
+                          <td>{product.productId}</td>
+                          <td>{product.productName}</td>
+                          <td>{product.quantity}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div className="d-flex">
+              <div className="vr"></div>
+            </div>
+            <div className="col-lg-5 ms-5">
+              <h3>Requisition Table</h3>
+              <div className="table-responsive">
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">REQ ID</th>
+                      <th scope="col">PRODUCT NAME</th>
+                      <th scope="col">QUANTITY</th>
+                      <th scope="col">STATUS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {requisition.map((req) => {
+                      return (
+                        <tr>
+                          <td>{req.requestid}</td>
+                          <td>{req.store.productName}</td>
+                          <td>{req.store.quantity}</td>
+                          <td>{req.rq}</td>
+                          <td>
+                            <button
+                              type="button"
+                              class="btn btn-primary"
+                              onClick={() => {
+                                if (req.rq !== "completed") {
+                                  updatestatus(req.requestid);
+                                }
+                              }}
+                              disabled={req.rq === "completed"}
+                            >
+                              Accept
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}

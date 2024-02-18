@@ -36,7 +36,7 @@ export default function Adminhome() {
       
       <div className="col">
         <div className="card" style={cardStyle}>
-          <Link to="/medicine-store">
+          <Link to="/AdminMedicalStorepage">
             <img
               src="https://uniquekiosk.com/wp-content/uploads/2020/08/39-10-1536x877.jpg"
               className="card-img-top"

@@ -74,7 +74,6 @@ export default function Dappointmnets() {
                 <td>{Appointment.usertable.lastname}</td>
                 <td>{Appointment.status}</td>
 
-                
                     <td>
                     <button className='btn btn-outline-primary' onClick={()=> {
                       setDataToTotalStorage(Appointment.app_id, Appointment.date, Appointment.notes, Appointment.time, Appointment.usertable.firstname, Appointment.usertable.lastname, Appointment.usertable.uid);

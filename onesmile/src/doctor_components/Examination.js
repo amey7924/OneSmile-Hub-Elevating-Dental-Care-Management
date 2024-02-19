@@ -27,6 +27,7 @@ var Tnotes=useRef();
        
         treatment_name:Tname,
         treatment_notes:Tnotes.current.value,
+        charges:examinationCharges,
         appointments:{app_id: app_id}
     }).then(response => {
         console.log(response.data);

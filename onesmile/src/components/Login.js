@@ -29,7 +29,7 @@ var status=false;
   const handleLogin = () => {
     for (var i = 0; i < getuser.length; i++) {
       if (
-        username.current.value === getuser[i].uname &&
+       ( username.current.value === getuser[i].uname||username.current.value === getuser[i].email)&&
         password.current.value === getuser[i].password&&
         getuser[i].role=="patient"
       ) {
@@ -89,10 +89,10 @@ var status=false;
   return (
     <>
       <section
-        className="container-fluid vh-100 bodycolor"
+        className="container-fluid  bodycolor"
         style={{ position: "relative" }}
       >
-        <div className="container py-5 h-100">
+        <div className="container py-5 ">
           <div className="row d-flex justify-content-center align-items-center">
             <div className="col-12 col-md-8 col-lg-6 col-xl-5">
               <div
@@ -120,15 +120,8 @@ var status=false;
                     />
                   </div>
                   <div className="form-check d-flex justify-content-start mb-4">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      value=""
-                      id="form1Example3"
-                    />
-                    <label className="form-check-label" htmlFor="form1Example3">
-                      &nbsp; Remember password{" "}
-                    </label>
+                    <a href="/ForgotPasswordpage">Click to Forgot password</a>
+                   
                   </div>
                   <ToastContainer />
                   <button

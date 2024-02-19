@@ -21,6 +21,8 @@ import Adddoctors from "./admin_components/Adddoctors";
 import AdminMedicalStore from "./admin_components/AdminMedicalStore";
 import Enquirepage from "./admin_components/Enquirepage";
 import DoctorMedicine from "./doctor_components/DoctorMedicine";
+import ForgotPassword from "./components/ForgotPassword";
+import Payments from "./components/Payments";
 
 
 const router = createBrowserRouter([
@@ -106,6 +108,13 @@ const router = createBrowserRouter([
       {
         path:"/DoctorMedicinepage",
         element:<DoctorMedicine/>
+      }, {
+        path:"/ForgotPasswordpage",
+        element:<ForgotPassword/>
+      },
+      {
+        path:"/paymentspage",
+        element:<Payments/>
       },
     ],
   },

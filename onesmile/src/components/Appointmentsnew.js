@@ -16,7 +16,7 @@ export default function Appointmentsnew() {
         console.log(response.data.length);
 
         for (let i = 0; i < response.data.length; i++) {
-          if (response.data[i].uname === Cookies.get("userlogin")) {
+          if (response.data[i].uname ||response.data[i].email === Cookies.get("userlogin")) {
             setuserid(response.data[i].uid);
           }
         }

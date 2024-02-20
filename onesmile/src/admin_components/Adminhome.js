@@ -111,7 +111,7 @@ export default function Adminhome() {
       </div>
       <div className="col">
         <div className="card" style={cardStyle}>
-          <Link to="/inquiry">
+          <Link to="/EnquiryDetailspage">
             <img
               src="https://www.freeiconspng.com/uploads/inquiry-icon-png-25.png"
               className="card-img-top"

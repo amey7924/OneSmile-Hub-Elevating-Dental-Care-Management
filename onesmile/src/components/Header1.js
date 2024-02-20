@@ -94,17 +94,23 @@ export default function Header1() {
                     Treatments
                   </Link>{" "}
                 </li>
-                <li class=" h4 nav-item ">
-                  <Link className="nav-link active" href="#">
-                    Reviews
-                  </Link>
-                </li>
-
-                {/* <li className="nav-item">
-                    <Link className="nav-link active text-white w-100 p-2">
-                      <button className='btn btn-outline-primary'>Book an appointment</button>
+                {isLoggedIn ? (
+                  <li class=" h4 nav-item ">
+                    <Link
+                      className="nav-link active"
+                      href="#"
+                      to="/MyProfilepage"
+                    >
+                      My Profile
                     </Link>
-                  </li> */}
+                  </li>
+                ) : (
+                  <li class=" h4 nav-item ">
+                    <Link className="nav-link active" href="#">
+                      Reviews
+                    </Link>
+                  </li>
+                )}
 
                 {isLoggedIn ? (
                   <li className="nav-item">

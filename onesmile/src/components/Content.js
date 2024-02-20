@@ -4,7 +4,7 @@ import img2 from "./images/IMG_9734.jpeg";
 import img3 from "./images/img2.jpeg";
 import img4 from "./images/starCrop.png";
 import img5 from "./images/starCrop4.png";
-import Enquirepage from "../admin_components/Enquirepage";
+import Enquirepage from "./Enquirepage";
 export default function Content() {
   return (
     // Crousel Section
@@ -56,9 +56,11 @@ export default function Content() {
       {/* ABOUT US Section */}
 
       <div class="container  mt-2  ">
-        <h1 className="text text-center pb-2" id="aboutpage">About us</h1>
+        <h1 className="text text-center pb-2" id="aboutpage">
+          About us
+        </h1>
         <div class="row">
-          <div class="col-8" >
+          <div class="col-8">
             <p style={{ color: "red", paddingLeft: "50px" }}>
               The One Smile Dental Centre is a multi-speciality laser and
               microscope enhanced dental clinic, managed by Dr. Sana Wadwan and
@@ -208,76 +210,103 @@ export default function Content() {
           </div>
           <hr></hr>
           {/* Review Section */}
-        
-          <div className="container testinomials ">
-            <h1 className="h1 text-center m-4" >Testimonials </h1>
-            <div className="row row-cols-1 row-cols-md-2 g-4 ">
-  <div className="col">
-    <div className="card">
-      <img src={img4} className="card-img-top mt-3" alt="..." height={"85px"} />
-      <div className="card-body">
-        <h3 className="card-title">Mr. Shiv Thackrey</h3>
-        <p className="card-text">
-        Dr. Munnazza Shaikh and the team at One Smile Dental Clinic provided outstanding care 
-        during my recent root canal. From the warm welcome to the meticulous procedure, 
-        every aspect exceeded my expectations.  Dr. Munnazza Shaikh explained everything clearly,
-         ensuring I felt comfortable throughout. The clinic's commitment to hygiene and patient 
-         comfort is commendable. I highly recommend One Smile Dental Clinic for top-tier dental care.
-        </p>
-      </div>
-    </div>
-  </div>
-  <div className="col">
-    <div className="card">
-      <img src={img5} className="card-img-top  mt-3" alt="..."  height={"85px"}/>
-      <div className="card-body">
-        <h3 className="card-title">Miss. Shefali Jariwala</h3>
-        <p className="card-text" >
-        From start to finish, my experience with Dr. Sana Wadwan teeth implants at One Smile Dental Clinic 
-        was outstanding.Dr. Sana Wadwan's expertise and attention to detail during the teeth implants 
-        procedure were truly remarkable. The staff's professionalism and support made me feel
-        comfortable throughout the entire process. Thanks to Dr. Sana, I now have natural-looking
-        teeth that have restored my confidence.
-        </p>
-      </div>
-    </div>
-  </div>
-  <div className="col">
-    <div className="card">
-      <img src={img5}className="card-img-top  mt-3" alt="..."height={"85px"} />
-      <div className="card-body">
-        <h3 className="card-title">Mr. Sakib Shaikh</h3>
-        <p className="card-text">
-          One Smile Dental Clinic provided a fantastic experience for my children's dentistry needs.
-         The staff's expertise and compassionate approach instantly put my kids at ease. 
-         The clinic's modern facilities and focus on preventive care impressed me. 
-         I highly recommend One Smile Dental Clinic for top-notch pediatric dental care.
-        </p>
-      </div>
-    </div>
-  </div>
-  <div className="col">
-    <div className="card">
-      <img src={img4}className="card-img-top  mt-3" alt="..." height={"85px"}  />
-      <div className="card-body">
-        <h3 className="card-title">Miss Shanaya Singh</h3>
-        <p className="card-text">
-         Dr. Nassem Tambat's gum therapy at One Smile Clinic was exemplary.
-         Dr. Tambat's warm demeanor and thorough explanations made each session comfortable and
-         informative. I highly recommend Dr. Tambat and One Smile Clinic for outstanding gum 
-        therapy and dental care.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-      <hr></hr>
-                </div>
-          </div>
-        </div>
 
-        <Enquirepage></Enquirepage>
+          <div className="container testinomials ">
+            <h1 className="h1 text-center m-4">Testimonials </h1>
+            <div className="row row-cols-1 row-cols-md-2 g-4 ">
+              <div className="col">
+                <div className="card">
+                  <img
+                    src={img4}
+                    className="card-img-top mt-3"
+                    alt="..."
+                    height={"85px"}
+                  />
+                  <div className="card-body">
+                    <h3 className="card-title">Mr. Shiv Thackrey</h3>
+                    <p className="card-text">
+                      Dr. Munnazza Shaikh and the team at One Smile Dental
+                      Clinic provided outstanding care during my recent root
+                      canal. From the warm welcome to the meticulous procedure,
+                      every aspect exceeded my expectations. Dr. Munnazza Shaikh
+                      explained everything clearly, ensuring I felt comfortable
+                      throughout. The clinic's commitment to hygiene and patient
+                      comfort is commendable. I highly recommend One Smile
+                      Dental Clinic for top-tier dental care.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="col">
+                <div className="card">
+                  <img
+                    src={img5}
+                    className="card-img-top  mt-3"
+                    alt="..."
+                    height={"85px"}
+                  />
+                  <div className="card-body">
+                    <h3 className="card-title">Miss. Shefali Jariwala</h3>
+                    <p className="card-text">
+                      From start to finish, my experience with Dr. Sana Wadwan
+                      teeth implants at One Smile Dental Clinic was
+                      outstanding.Dr. Sana Wadwan's expertise and attention to
+                      detail during the teeth implants procedure were truly
+                      remarkable. The staff's professionalism and support made
+                      me feel comfortable throughout the entire process. Thanks
+                      to Dr. Sana, I now have natural-looking teeth that have
+                      restored my confidence.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="col">
+                <div className="card">
+                  <img
+                    src={img5}
+                    className="card-img-top  mt-3"
+                    alt="..."
+                    height={"85px"}
+                  />
+                  <div className="card-body">
+                    <h3 className="card-title">Mr. Sakib Shaikh</h3>
+                    <p className="card-text">
+                      One Smile Dental Clinic provided a fantastic experience
+                      for my children's dentistry needs. The staff's expertise
+                      and compassionate approach instantly put my kids at ease.
+                      The clinic's modern facilities and focus on preventive
+                      care impressed me. I highly recommend One Smile Dental
+                      Clinic for top-notch pediatric dental care.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="col">
+                <div className="card">
+                  <img
+                    src={img4}
+                    className="card-img-top  mt-3"
+                    alt="..."
+                    height={"85px"}
+                  />
+                  <div className="card-body">
+                    <h3 className="card-title">Miss Shanaya Singh</h3>
+                    <p className="card-text">
+                      Dr. Nassem Tambat's gum therapy at One Smile Clinic was
+                      exemplary. Dr. Tambat's warm demeanor and thorough
+                      explanations made each session comfortable and
+                      informative. I highly recommend Dr. Tambat and One Smile
+                      Clinic for outstanding gum therapy and dental care.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr></hr>
+          </div>
+          <Enquirepage></Enquirepage>
+        </div>
       </div>
-    
+    </div>
   );
 }

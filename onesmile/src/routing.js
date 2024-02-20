@@ -19,10 +19,11 @@ import Examinationdetails from "./admin_components/Examinationdetails";
 import Appointmentsdetails from "./admin_components/Appointmentsdetails";
 import Adddoctors from "./admin_components/Adddoctors";
 import AdminMedicalStore from "./admin_components/AdminMedicalStore";
-import Enquirepage from "./admin_components/Enquirepage";
 import DoctorMedicine from "./doctor_components/DoctorMedicine";
 import ForgotPassword from "./components/ForgotPassword";
 import Payments from "./components/Payments";
+import EnquiryDetails from "./admin_components/EnquiryDetails";
+import MyProfile from "./components/MyProfile";
 
 
 const router = createBrowserRouter([
@@ -102,10 +103,6 @@ const router = createBrowserRouter([
         element:<AdminMedicalStore/>
       },
       {
-        path:"/Enquirepage",
-        element:<Enquirepage/>
-      },
-      {
         path:"/DoctorMedicinepage",
         element:<DoctorMedicine/>
       }, {
@@ -116,6 +113,16 @@ const router = createBrowserRouter([
         path:"/paymentspage",
         element:<Payments/>
       },
+      {
+        path:"/EnquiryDetailspage",
+        element:<EnquiryDetails/>
+      },
+      {
+        path:"/MyProfilepage",
+        element:<MyProfile/>
+      },
+      
+      
     ],
   },
 ]);

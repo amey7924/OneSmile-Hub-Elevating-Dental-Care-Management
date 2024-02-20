@@ -37,6 +37,7 @@ var status=false;
         status=true;
         window.sessionStorage.setItem("abc", "1");
         window.sessionStorage.setItem("loginstore", "1");
+        Cookie.set("userid",getuser[i].uid);
         Cookie.set("userlogin", username.current.value, {
           expires: 1,
           secure: true,

@@ -25,6 +25,8 @@ export default function Header1() {
   var logouthandle = () => {
     window.sessionStorage.setItem("loginstore", "0");
     Cookie.remove("userlogin");
+    Cookie.remove("uid");
+    Cookie.remove("usersetid");
     isLoggedIn = false;
     console.log(isLoggedIn);
     alert("hi");
@@ -95,14 +97,44 @@ export default function Header1() {
                   </Link>{" "}
                 </li>
                 {isLoggedIn ? (
-                  <li class=" h4 nav-item ">
+                  <li className="h4 nav-item dropdown">
                     <Link
-                      className="nav-link active"
+                      className="nav-link dropdown-toggle"
                       href="#"
-                      to="/MyProfilepage"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
                     >
-                      My Profile
+                      Details
                     </Link>
+                    <ul className="dropdown-menu">
+                      <li>
+                        <Link className="dropdown-item" to="/myprofilepage">
+                          My Profile
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          className="dropdown-item"
+                          to="/UserAppointmentspage"
+                        >
+                          My Appointments
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          className="dropdown-item"
+                          to="/UserExaminationpage"
+                        >
+                          My Examinations
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item" to="/UserPaymentspage">
+                          My Payments
+                        </Link>
+                      </li>
+                    </ul>
                   </li>
                 ) : (
                   <li class=" h4 nav-item ">

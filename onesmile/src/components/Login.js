@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../App.css";
 import { useNavigate } from "react-router-dom";
-import Cookie from "js-cookie";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Cookies from "js-cookie";
+import Cookie from "js-cookie";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -37,18 +37,26 @@ var status=false;
         status=true;
         window.sessionStorage.setItem("abc", "1");
         window.sessionStorage.setItem("loginstore", "1");
-        Cookie.set("userid",getuser[i].uid);
+      
+        Cookie.set("usersetid", getuser[i].uid, {
+          expires: 1,
+          secure: true,
+          sameSite: "strict",
+        });
+        
+      
+       
         Cookie.set("userlogin", username.current.value, {
           expires: 1,
           secure: true,
           sameSite: "strict",
         });
 
-        if (Cookies.get("loginbook") == 1) {
+        if (Cookie.get("loginbook") == 1) {
           console.log("login" + Cookie.get("loginbook"));
           navigate("/");
         }
-        if (Cookies.get("book_s") == 2) {
+        if (Cookie.get("book_s") == 2) {
           console.log("login" + Cookie.get("book_s"));
           navigate("/appointmentspage");
         }

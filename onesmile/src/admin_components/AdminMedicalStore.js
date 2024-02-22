@@ -16,7 +16,7 @@ export default function AdminMedicalStore() {
       });
 
     axios
-      .get("http://localhost:8087/Requisitions/allrequisition")
+      .get("http://localhost:8087/Requisition/allreq")
       .then((response) => {
         console.log(response.data);
         setrequisition(response.data);
@@ -26,17 +26,24 @@ export default function AdminMedicalStore() {
       });
   }, []);
 
-  const updatestatus = (id) => {
-    alert("hi"+id);
-   
+  const updatestatus = (id,quantity,productid,storedata) => {
+    alert("hi" + id);
+
+    console.log(quantity);
+    console.log(productid);
+    console.log(storedata);
+
+    var updatedqnt=storedata.quantity+quantity;
+    console.log(updatedqnt);
     axios
-      .put("http://localhost:8087/Requisitions/updatereq/" + id,{
-          rq: "completed",
-          
-        })
-        .then((response) => {
-          alert("requisition updated");
-          window.location.reload();
+      .put("http://localhost:8087/Requisition/updatereq/" + id, {
+        status: "completed",
+         Store:storedata,
+        quantity:updatedqnt
+      })
+      .then((response) => {
+        alert("requisition updated");
+        window.location.reload();
       })
       .catch((error) => {
         console.log(error);
@@ -91,20 +98,21 @@ export default function AdminMedicalStore() {
                     {requisition.map((req) => {
                       return (
                         <tr>
-                          <td>{req.requestid}</td>
+                          <td>{req.reqId}</td>
                           <td>{req.store.productName}</td>
-                          <td>{req.store.quantity}</td>
-                          <td>{req.rq}</td>
+                          <td>{req.quantity}</td>
+                          <td>{req.status}</td>
+                          <td style={{display:"none"}} >{req.store.productId}</td>
                           <td>
                             <button
                               type="button"
-                              class="btn btn-primary"
+                              class="btn btn-outline-primary  "
                               onClick={() => {
-                                if (req.rq !== "completed") {
-                                  updatestatus(req.requestid);
+                                if (req.status !== "completed") {
+                                  updatestatus(req.reqId,req.quantity,req.store.productId,req.store);
                                 }
                               }}
-                              disabled={req.rq === "completed"}
+                              disabled={req.status === "completed"}
                             >
                               Accept
                             </button>

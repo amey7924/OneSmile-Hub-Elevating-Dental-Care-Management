@@ -17,7 +17,7 @@ export default function Examinationdetails() {
   return (
     <>
       <div className="container">
-        <h1>Examinations</h1>
+        <h1>Examination Details</h1>
         <div className="row">
           <table class="table table-striped">
             <thead>
@@ -29,6 +29,7 @@ export default function Examinationdetails() {
                 <th scope="col">USERNAME</th>
                 <th scope="col">FIRST NAME</th>
                 <th scope="col">LAST NAME</th>
+                <th scope="col">CHARGES</th>
               </tr>
             </thead>
             <tbody>
@@ -42,6 +43,7 @@ export default function Examinationdetails() {
                     <td>{ex.appointments.usertable.uname}</td>
                     <td>{ex.appointments.usertable.firstname}</td>
                     <td>{ex.appointments.usertable.lastname}</td>
+                    <td>{ex.charges}</td>
                   </tr>
                 );
               })}

@@ -24,6 +24,11 @@ import ForgotPassword from "./components/ForgotPassword";
 import Payments from "./components/Payments";
 import EnquiryDetails from "./admin_components/EnquiryDetails";
 import MyProfile from "./components/MyProfile";
+import AllPayments from "./admin_components/AllPayments";
+import UserAppointments from "./components/UserAppointments";
+import UserExamination from "./components/UserExamination";
+import UserPayments from "./components/UserPayments";
+import UserReschedule from "./components/UserReschedule";
 
 
 const router = createBrowserRouter([
@@ -120,6 +125,26 @@ const router = createBrowserRouter([
       {
         path:"/MyProfilepage",
         element:<MyProfile/>
+      },
+      {
+        path:"/Allpaymentspage",
+        element:<AllPayments/>
+      },
+      {
+        path:"/UserAppointmentspage",
+        element:<UserAppointments/>
+      },
+      {
+        path:"/UserExaminationpage",
+        element:<UserExamination/>
+      },
+      {
+        path:"/UserPaymentspage",
+        element:<UserPayments/>
+      },
+      {
+        path:"/UserReschedulepage",
+        element:<UserReschedule/>
       },
       
       

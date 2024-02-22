@@ -1,9 +1,13 @@
 import React, { useRef, useState } from "react";
 
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 export default function Examination() {
+  const navigate=useNavigate();
   const [examinationCharges, setExaminationCharges] = useState("");
   const [applicationId, setApplicationId] = useState("");
+  const [selectedProductid, setSelectedProduct] = useState('');
+  const [selectedQuantity, setSelectedQuantity] = useState('');
 
 
 var firstName=localStorage.getItem("firstName");
@@ -12,6 +16,15 @@ var app_id=localStorage.getItem("appid");
 
 const [Tname, settname] = useState('OTHER');
 var Tnotes=useRef();
+
+const handleProductChange = (event) => {
+  setSelectedProduct(event.target.value);
+};
+
+const handleQuantityChange = (event) => {
+  setSelectedQuantity(event.target.value);
+};
+
 
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevent default form submission
@@ -29,14 +42,37 @@ var Tnotes=useRef();
         treatment_notes:Tnotes.current.value,
         charges:examinationCharges,
         appointments:{app_id: app_id}
+
     }).then(response => {
         console.log(response.data);
         alert("Examine  successfully");
-        navigate("/home");
     }).catch((error) => {
         console.log(error);
     });
     
+    console.log(selectedProductid);
+    console.log(selectedQuantity);
+
+    handlestore();
+
+
+
+  }
+  
+
+  const handlestore = () => {
+    axios
+    .put("http://localhost:8087/store/updateqnt/" + selectedProductid, {
+      quantity:selectedQuantity
+    })
+    .then((response) => {
+      alert("medicine updated");
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    navigate("/Dappointmnetspage");
   };
   return (
     <>
@@ -93,6 +129,45 @@ var Tnotes=useRef();
                   required
                 />
               </div>
+              
+              <div className="td1 mt-3">
+                                <label htmlFor="productSelect" className="form-label"> Product:</label>
+                                <select
+                                    className="form-select w-auto"
+                                    id="productSelect"
+                                    value={selectedProductid}
+                                    onChange={handleProductChange}
+                                >
+                                    <option value="">Select a product</option>
+                                    <option value="1">Aspirin</option>
+                                    <option value="2">Morphine</option>
+                                    <option value="3">Tetracaine</option>
+                                    <option value="4">Amoxicillin</option>
+                                    <option value="5">Penicillin V</option>
+                                    <option value="6">Nystatin</option>
+                                    <option value="7">Acyclovir</option>
+                                    <option value="8">Desflurane</option>
+                                    <option value="9">Diazepam</option>
+                                    <option value="10">Cefazolin</option>
+                                </select>
+                     </div>
+                     <div className="td1 mt-3">
+                                <label htmlFor="quantitySelect" className="form-label me-3"> Quantity:</label>
+                                <select
+                                    className="form-select w-auto"
+                                    id="quantitySelect"
+                                    value={selectedQuantity}
+                                    onChange={handleQuantityChange}
+                                >
+                                    <option value="">Select Quantity</option>
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                </select>
+                            </div>
+
             </div>
             <div class="col-6">
               <div className="td1">
@@ -139,6 +214,7 @@ var Tnotes=useRef();
                   required
                 ></textarea>
               </div>
+
             </div>
           </div>
           <div class="text-center mt-5 me-5 pe-5 ">

@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 export default function MyProfile() {
     const [users , setUsers] = useState([]);
    // var uid = localStorage.getItem('userid');
-    var uid=Cookies.get("userid");
+    var uid=Cookies.get("usersetid");
     useEffect(() => {
         axios.get("http://localhost:8087/user/oneuser/"+uid)
             .then((response) => {
@@ -35,8 +35,10 @@ export default function MyProfile() {
                     <div className="col col-lg-6 mb-4 mb-lg-0">
                         <div className="card mb-3" style={{ border: '.5rem' }}>
                             <div className="row g-0">
-                                <div className="col-md-4 gradient-custom text-center text-white">
-                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                            <div className="col-md-4 gradient- text-center " style={{
+                                    background: 'linear-gradient(to top, rgb(175, 216, 300), rgb(135, 206, 300))'
+                                }}>
+                                    <img src="https://media.istockphoto.com/id/1298261537/vector/blank-man-profile-head-icon-placeholder.jpg?s=612x612&w=0&k=20&c=CeT1RVWZzQDay4t54ookMaFsdi7ZHVFg2Y5v7hxigCA="
                                         alt="Avatar" className="img-fluid my-5" style={{ width: '80px' }} />
                                     <h5>My Profile</h5>
                                     <i className="far fa-edit mb-5"></i>

@@ -17,7 +17,7 @@ export default function Userdetails() {
    <>
    
    <div className='container'>
-    <h1>Appointments</h1>
+    <h1>User Details</h1>
 <div className='row'>
   <table class="table table-striped">
     <thead>

@@ -96,7 +96,7 @@ export default function Adminhome() {
       </div>
       <div className="col">
         <div className="card" style={cardStyle}>
-          <Link to="/medicine-store">
+          <Link to="/Allpaymentspage">
             <img
               src="https://cdn1.vectorstock.com/i/1000x1000/75/20/digital-payment-design-vector-4217520.jpg"
               className="card-img-top"

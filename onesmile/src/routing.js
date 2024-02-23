@@ -29,6 +29,7 @@ import UserAppointments from "./components/UserAppointments";
 import UserExamination from "./components/UserExamination";
 import UserPayments from "./components/UserPayments";
 import UserReschedule from "./components/UserReschedule";
+import PaymentQR from "./components/PaymentQR";
 
 
 const router = createBrowserRouter([
@@ -145,6 +146,9 @@ const router = createBrowserRouter([
       {
         path:"/UserReschedulepage",
         element:<UserReschedule/>
+      }, {
+        path:"/PaymentQRpage",
+        element:<PaymentQR/>
       },
       
       

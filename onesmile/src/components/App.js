@@ -4,7 +4,10 @@ import Content from "./Content";
 import Footer from "./Footer";
 import Dheader from "../doctor_components/Dheader";
 import Aheader from "../admin_components/Aheader";
+import { ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
+  
   var g = window.sessionStorage.getItem("abc");
   console.log(g);
 
@@ -21,6 +24,20 @@ function App() {
 
   return (
     <>
+    <ToastContainer
+    position="top-center"
+    autoClose={4000}
+    hideProgressBar={false}
+    newestOnTop={false}
+    closeOnClick
+    rtl={false}
+    pauseOnFocusLoss
+    draggable
+    pauseOnHover
+    theme="light"
+    bodyClassName="toastBody"
+    
+    />
       {headerComponent}
       <Outlet />
       <Footer />

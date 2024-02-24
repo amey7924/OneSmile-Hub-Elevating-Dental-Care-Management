@@ -1,13 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 export default function Appointmentsnew() {
+
+  const navigate = useNavigate();
   const backgroundImage =
     "https://png.pngtree.com/back_origin_pic/04/54/70/2cd697ae026b76105a4503dcc7dd7c31.jpg";
 
   const [getuser, setuser] = useState([]);
   const [getuserid, setuserid] = useState();
   useEffect(() => {
+    if(Cookies.get("userlogin")==null) {
+      navigate("/loginpage");
+      }
     axios
       .get("http://localhost:8087/user/alluser")
       .then((response) => {
@@ -51,7 +57,7 @@ export default function Appointmentsnew() {
       .then((response) => {
         console.log(response.data);
         alert("Appointment booked successfully");
-        navigate("/home");
+        
       })
       .catch((error) => {
         console.log(error);

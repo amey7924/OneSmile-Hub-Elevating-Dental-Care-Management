@@ -22,7 +22,9 @@ function handledoctor(){
     email: email.current.value,
     mobileno: phno.current.value,
     uname: username.current.value,
-    lastname: lastname.current.value
+    lastname: lastname.current.value,
+    question: selectedQuestion,
+    answer: answer
 
   })
   .then((response) => {
@@ -35,6 +37,11 @@ function handledoctor(){
   });
 
 }
+const [selectedQuestion, setSelectedQuestion] = useState('');
+const [answer, setAnswer] = useState('');
+const handleQuestion = (event) => {
+  setSelectedQuestion(event.target.value);
+};
 
   return (
     <div class="container">
@@ -84,6 +91,24 @@ function handledoctor(){
               ref={phno}
             />
           </div>
+          <div className="td1 mt-3">
+                      <select
+                       style={{ width: "85%" }}
+                        id="questionSelect"
+                        value={selectedQuestion}
+                        onChange={handleQuestion}
+                        required
+                      >
+                        <option value="">Select Question</option>
+                        <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+                        <option value="In what city were you born?">In what city were you born?</option>
+                        <option value="What is the name of your first pet?">What is the name of your first pet?</option>
+                        <option value="What is the model of your first car?">What is the model of your first car?</option>
+                        <option value="What is the name of your favorite teacher from school?">What is the name of your favorite teacher from school?</option>
+                      </select>
+                    </div>
+
+                    
         </div>
         <div class="col-6">
           <div className="td1">
@@ -128,10 +153,13 @@ function handledoctor(){
               ref={email}
             />
           </div>
+          <div className="td1 mt-3">
+                      <input type="text" id="typeAnswerX-2"  placeholder="Answer"  style={{ width: "85%" }}value={answer} onChange={(e) => setAnswer(e.target.value)} required />
+                    </div>
         </div>
       </div>
-      <div className="container text-center">
-        <div className="col-md-4">
+      <div className="container text-center" >
+        <div className="col-md-12 my-2" style={{ marginRight:"80px"}}>
       <button type="submit" className="btn btn-primary btn-w-5 mt-3" onClick={handledoctor}>
             Register
           </button>

@@ -23,7 +23,7 @@ export default function Register() {
       console.log(error);
     })
   }, []);
-
+  
   const handleQuestion = (event) => {
     setSelectedQuestion(event.target.value);
   };

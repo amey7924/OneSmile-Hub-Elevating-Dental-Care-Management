@@ -1,19 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../App.css";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import 'react-toastify/dist/ReactToastify.css';
 import Cookie from "js-cookie";
 import axios from "axios";
-import Cookies from "js-cookie";
-
-export default function Login() {
+import { toast } from 'react-toastify';
+export default function Login() 
+{
   const navigate = useNavigate();
   const username = useRef();
   const password = useRef();
 
   const [getuser, setusers] = useState([]);
-
+  const [userdata,setuserdata]=useState([]);
+  const [statusCode, setStatusCode] = useState(null);
   useEffect(() => {
     axios
       .get("http://localhost:8087/user/alluser")
@@ -25,75 +25,95 @@ export default function Login() {
         console.log(error);
       });
   }, []);
+
 var status=false;
   const handleLogin = () => {
-    for (var i = 0; i < getuser.length; i++) {
-      if (
-       ( username.current.value === getuser[i].uname||username.current.value === getuser[i].email)&&
-        password.current.value === getuser[i].password&&
-        getuser[i].role=="patient"
-      ) {
+    axios.post(`http://localhost:8087/user/authuser`, {
+      uname: username.current.value,
+      password:password.current.value
+    })
+    .then(response => {
+      setuserdata(response.data)
+      setStatusCode(response.status);
+      //window.location.reload();
+      console.log(response.status);
+    })
+    .catch(error => {
+      setStatusCode(error.response.status);
+      console.error(error.response.status); // Handle error
+     // setStatusCode(response.status);// Handle successful response
+    });
 
-        status=true;
-        window.sessionStorage.setItem("abc", "1");
-        window.sessionStorage.setItem("loginstore", "1");
-      
-        Cookie.set("usersetid", getuser[i].uid, {
-          expires: 1,
-          secure: true,
-          sameSite: "strict",
-        });
+  }
+    console.log(userdata);
+    if(statusCode=="200" && userdata.role=="patient"){
+      status=true;
+      toast.success("Login successful");
+          window.sessionStorage.setItem("abc", "1");
+          window.sessionStorage.setItem("loginstore", "1");
         
-      
-       
-        Cookie.set("userlogin", username.current.value, {
-          expires: 1,
-          secure: true,
-          sameSite: "strict",
-        });
+          Cookie.set("usersetid", getuser.uid, {
+            expires: 1,
+            secure: true,
+            sameSite: "strict",
+          });
+          
+        
+         
+          Cookie.set("userlogin", username.current.value, {
+            expires: 1,
+            secure: true,
+            sameSite: "strict",
+          });
+  
+          if (Cookie.get("loginbook") == 1) {
+            console.log("login" + Cookie.get("loginbook"));
+            navigate("/");
+          }
+          if (Cookie.get("book_s") == 2) {
+            console.log("login" + Cookie.get("book_s"));
+            navigate("/appointmentspage");
+          }
 
-        if (Cookie.get("loginbook") == 1) {
-          console.log("login" + Cookie.get("loginbook"));
+    }
+
+    else if (statusCode=="200" && userdata.role=="doctor"){
+      toast.success("Login successful");
+      status=true;
+          window.sessionStorage.setItem("abc", "2");
           navigate("/");
-        }
-        if (Cookie.get("book_s") == 2) {
-          console.log("login" + Cookie.get("book_s"));
-          navigate("/appointmentspage");
-        }
+          window.location.reload();
 
-        // navigate("/appointmentspage")
-      } else if (
-        username.current.value === getuser[i].uname &&
-        password.current.value === getuser[i].password && getuser[i].role=="admin"
-      ) {
-        status=true;
-        window.sessionStorage.setItem("abc", "3");
-        Cookie.set("xyz", username.current.value, {
-          expires: 1,
-          secure: true,
-          sameSite: "strict",
-        });
-        notify("Login successful"); // Call notify with message
-        navigate("/adminhomepage");
-        window.location.reload();
-      } else if (
-        username.current.value === getuser[i].uname &&
-        password.current.value === getuser[i].password &&getuser[i].role=="doctor"
-      ) {
-        status=true;
-        window.sessionStorage.setItem("abc", "2");
-        window.location.reload();
-        navigate("/");
-      }
-      
+    }
+    else if(statusCode=="200" && userdata.role=="admin"){
+      toast.success("Login successful");
+      status=true;
+          window.sessionStorage.setItem("abc", "3");
+          Cookie.set("xyz", username.current.value, {
+            expires: 1,
+            secure: true,
+            sameSite: "strict",
+          });
+        // Call notify with message
+          navigate("/adminhomepage");
+          window.location.reload();
+
+    }
+    else if(statusCode==404){
+      toast.error("User not  found");
+    }
+    else if(statusCode==401){
+      toast.error("unauthorized access");
     }
 
-    if(status==false){
-      alert("login faild");
-    }
-  };
+   
 
-  const notify = (message) => toast(message);
+  //  if(status==false){
+  //     alert("login faild");
+  //   }
+  
+
+  
 
   return (
     <>
@@ -132,7 +152,7 @@ var status=false;
                     <a href="/ForgotPasswordpage">Click to Forgot password</a>
                    
                   </div>
-                  <ToastContainer />
+                 
                   <button
                     className="btn btn-primary btn-lg btn-block"
                     type="submit"

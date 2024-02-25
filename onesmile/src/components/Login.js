@@ -52,7 +52,7 @@ var status=false;
           window.sessionStorage.setItem("abc", "1");
           window.sessionStorage.setItem("loginstore", "1");
         
-          Cookie.set("usersetid", getuser.uid, {
+          Cookie.set("usersetid", userdata.uid, {
             expires: 1,
             secure: true,
             sameSite: "strict",

@@ -2,18 +2,22 @@ import React, { useEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-export default function Appointmentsnew() {
 
+export default function Appointmentsnew() {
   const navigate = useNavigate();
   const backgroundImage =
     "https://png.pngtree.com/back_origin_pic/04/54/70/2cd697ae026b76105a4503dcc7dd7c31.jpg";
 
   const [getuser, setuser] = useState([]);
   const [getuserid, setuserid] = useState();
+  const [dateError, setDateError] = useState('');
+  const [timeError, setTimeError] = useState('');
+
   useEffect(() => {
     if(Cookies.get("userlogin")==null) {
       navigate("/loginpage");
-      }
+    }
+
     axios
       .get("http://localhost:8087/user/alluser")
       .then((response) => {
@@ -23,7 +27,6 @@ export default function Appointmentsnew() {
 
         for (let i = 0; i < response.data.length; i++) {
           if (response.data[i].uname === Cookies.get("userlogin")) {
-            
             setuserid(response.data[i].uid);
             console.log(response.data[i].uid);
           }
@@ -40,28 +43,85 @@ export default function Appointmentsnew() {
   var apptime = useRef();
   var msg = useRef();
 
-  const handlebooking = (e) => {
-    console.log(appdate.current.value);
-    console.log(apptime.current.value);
-    console.log(msg.current.value);
+  const getCurrentDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    let month = today.getMonth() + 1;
+    let day = today.getDate();
 
+    if (month < 10) {
+      month = '0' + month;
+    }
+    if (day < 10) {
+      day = '0' + day;
+    }
+
+    return `${year}-${month}-${day}`;
+  };
+
+  const getMaxDate = () => {
+    const today = new Date();
+    today.setMonth(today.getMonth() + 2);
+    const year = today.getFullYear();
+    let month = today.getMonth() + 1;
+    let day = today.getDate();
+
+    if (month < 10) {
+      month = '0' + month;
+    }
+    if (day < 10) {
+      day = '0' + day;
+    }
+
+    return `${year}-${month}-${day}`;
+  };
+
+  const handlebooking = (e) => {
     e.preventDefault(); //for chrome browser
+
+    // Date Validation
+    const selectedDate = new Date(appdate.current.value);
+    const currentDate = new Date();
+    const maxDate = new Date();
+    maxDate.setMonth(currentDate.getMonth() + 2);
+
+    if (selectedDate < currentDate || selectedDate > maxDate) {
+      setDateError('Please select a date within the next 2 months');
+      return;
+    } else {
+      setDateError('');
+    }
+
+    // Time Validation
+    const selectedTime = apptime.current.value;
+    const startTime = '10:00';
+    const endTime = '20:00';
+
+    if (selectedTime < startTime || selectedTime > endTime) {
+      setTimeError('Please select a time between 10:00 AM and 8:00 PM');
+      return;
+    } else {
+      setTimeError('');
+    }
+
     axios
       .post("http://localhost:8087/appointments/addappointment", {
         date: appdate.current.value,
         time: apptime.current.value,
         notes: msg.current.value,
-        // 'usertable' represents a table, and 'uid' is a field within that table
         usertable: { uid: getuserid },
       })
       .then((response) => {
         console.log(response.data);
         alert("Appointment booked successfully");
-        
       })
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const handleCancel = () => {
+    navigate("/");
   };
 
   return (
@@ -94,7 +154,6 @@ export default function Appointmentsnew() {
           className="col-md-6 offset-md-3 transperent"
           style={{ backgroundColor: "light-blue" }}
         >
-          {/* Apply transparency to the background color */}
           <div className="col-12">
             <h3
               className="fw-normal text-secondary fs-4 text-uppercase mb-4"
@@ -113,17 +172,23 @@ export default function Appointmentsnew() {
                   className="form-control"
                   placeholder="Enter Date"
                   ref={appdate}
+                  required
+                  min={getCurrentDate()}
+                  max={getMaxDate()}
                 />
+                {dateError && <p style={{ color: 'red' }}>{dateError}</p>}
               </div>
               <div className="col-md-6">
-                <label htmlFor="date">time</label>
+                <label htmlFor="time">Time</label>
                 <input
                   type="time"
-                  id="date"
+                  id="time"
                   className="form-control"
-                  placeholder="Enter Date"
+                  placeholder="Enter Time"
                   ref={apptime}
+                  required
                 />
+                {timeError && <p style={{ color: 'red' }}>{timeError}</p>}
               </div>
               <div className="col-12">
                 <label htmlFor="message">Message</label>
@@ -135,23 +200,24 @@ export default function Appointmentsnew() {
                 ></textarea>
               </div>
               <div className="col-md-6">
-                <label htmlFor="date">username</label>
+                <label htmlFor="username">Username</label>
                 <input
                   type="text"
-                  id="date"
+                  id="username"
                   className="form-control"
-                  placeholder="Enter Date"
+                  placeholder="Username"
                   value={Cookies.get("userlogin")}
+                  readOnly
                 />
               </div>
               <div className="col-md-6">
-                <label>userid</label>
+                <label htmlFor="userid">UserID</label>
                 <input
                   type="text"
-                  id="date"
+                  id="userid"
                   className="form-control"
                   value={getuserid}
-                  readOnly={true}
+                  readOnly
                 />
               </div>
               <div className="col-12 mt-5">
@@ -162,7 +228,11 @@ export default function Appointmentsnew() {
                 >
                   Book Appointment
                 </button>
-                <button type="button" className="btn btn-danger float-end me-2">
+                <button
+                  type="button"
+                  className="btn btn-danger float-end me-2"
+                  onClick={handleCancel}
+                >
                   Cancel
                 </button>
               </div>

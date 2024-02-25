@@ -4,6 +4,14 @@ import { useNavigate } from 'react-router-dom';
 
 
 export default function Adddoctors() {
+
+  const [firstNameError, setFirstNameError] = useState('');
+  const [lastNameError, setLastNameError] = useState('');
+  const [userNameError, setUserNameError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [mobileError, setMobileError] = useState('');
+  const [emailError, setEmailError] = useState('');
+
   const navigate = useNavigate();
   const firstname = useRef();
   const lastname = useRef();
@@ -15,6 +23,57 @@ export default function Adddoctors() {
 function handledoctor(){
   console.log(firstname.current.value + ' ' + lastname.current.value  + ' ' + email.current.value )
   console.log(password.current.value + ' ' + phno.current.value  + ' ' + username.current.value )
+  const firstNameRegex = /^[a-zA-Z]+$/;
+  const usernameRegex = /^[a-zA-Z0-9_]+$/;
+  const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/;
+  const mobileRegex = /^[6-9]\d{9}$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!firstNameRegex.test(firstname.current.value)) {
+    setFirstNameError('First Name should only contain alphabets');
+    return;
+  } else {
+    setFirstNameError('');
+  }
+
+  if (!firstNameRegex.test(lastname.current.value)) {
+    setLastNameError('Last Name should only contain alphabets');
+    return;
+  } else {
+    setLastNameError('');
+  }
+
+  if (!usernameRegex.test(username.current.value)) {
+    setUserNameError('Username can contain alphabets, numbers, and underscore only');
+    return;
+  } else {
+    setUserNameError('');
+  }
+
+  if (!passwordRegex.test(password.current.value)) {
+    setPasswordError(
+      'Password must be 8 to 15 characters long, contain at least one uppercase letter, one number, and one special character'
+    );
+    return;
+  } else {
+    setPasswordError('');
+  }
+
+  if (!mobileRegex.test(phno.current.value)) {
+    setMobileError('Mobile number should start from 6-9 and should be 10 digits');
+    return;
+  } else {
+    setMobileError('');
+  }
+
+  if (!emailRegex.test(email.current.value)) {
+    setEmailError('Please enter a valid email address');
+    return;
+  } else {
+    setEmailError('');
+  }
+
+
   axios
   .post('http://localhost:8087/user/adddoctor', {
     firstname: firstname.current.value,
@@ -44,7 +103,12 @@ const handleQuestion = (event) => {
 };
 
   return (
-    <div class="container">
+    < >
+    <form onSubmit={handledoctor}>
+
+
+   
+     <div class="container">
       <div class="row">
         <div class="col-6">
           <div className="td1">
@@ -62,6 +126,7 @@ const handleQuestion = (event) => {
               
               
             />
+              <p className="text-danger">{firstNameError}</p>
           </div>
           <div className="td1 mt-3">
             <div className="lbl">
@@ -76,6 +141,7 @@ const handleQuestion = (event) => {
               style={{ width: "85%" }}
               ref={username}
             />
+            <p className="text-danger">{userNameError}</p>
           </div>
           <div className="td1 mt-3">
             <div className="lbl">
@@ -90,6 +156,7 @@ const handleQuestion = (event) => {
               style={{ width: "85%" }}
               ref={phno}
             />
+              <p className="text-danger">{mobileError}</p>
           </div>
           <div className="td1 mt-3">
                       <select
@@ -124,6 +191,7 @@ const handleQuestion = (event) => {
               style={{ width: "85%" }}
               ref={lastname}
             />
+              <p className="text-danger">{lastNameError}</p>
           </div>
           <div className="td1 mt-3">
             <div className="lbl">
@@ -138,6 +206,7 @@ const handleQuestion = (event) => {
               style={{ width: "85%" }}
               ref={password}
             />
+            <p className="text-danger">{passwordError}</p>
           </div>
           <div className="td1 mt-3">
             <div className="lbl">
@@ -152,20 +221,23 @@ const handleQuestion = (event) => {
               style={{ width: "85%" }}
               ref={email}
             />
+             <p className="text-danger">{emailError}</p>
           </div>
           <div className="td1 mt-3">
-                      <input type="text" id="typeAnswerX-2"  placeholder="Answer"  style={{ width: "85%" }}value={answer} onChange={(e) => setAnswer(e.target.value)} required />
+                      <input type="text" id="typeAnswerX-2"  placeholder="Answer"  style={{ width: "85%" }}value={answer} onChange={(e) => setAnswer(e.target.value)} required  />
                     </div>
         </div>
       </div>
       <div className="container text-center" >
         <div className="col-md-12 my-2" style={{ marginRight:"80px"}}>
-      <button type="submit" className="btn btn-primary btn-w-5 mt-3" onClick={handledoctor}>
+      <button type="submit" className="btn btn-primary btn-w-5 mt-3" >
             Register
           </button>
 
         </div>
       </div>
     </div>
-  );
+    </form>
+    </>
+  )
 }

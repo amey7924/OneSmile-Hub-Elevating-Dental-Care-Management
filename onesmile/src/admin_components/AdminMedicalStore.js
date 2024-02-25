@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 export default function AdminMedicalStore() {
   const [store, setstore] = useState([]);
   const [requisition, setrequisition] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
+    if(Cookies.get("Adminlog")==null) {
+      navigate("/loginpage");
+    }
     axios
       .get("http://localhost:8087/store/allstore")
       .then((response) => {

@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import qrimg from "../components/images/paymentqr.jpeg";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 export default function PaymentQR() {
+  const navigate = useNavigate();
+  useEffect(() =>{
+
+    if(Cookies.get("userlogin")==null) {
+      navigate("/loginpage");
+    }
+  })
   return (
     <>
       <div className="container py-5 ">

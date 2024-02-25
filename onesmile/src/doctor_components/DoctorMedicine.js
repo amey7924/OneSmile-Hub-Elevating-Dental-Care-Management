@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
-
+import Cookies from "js-cookie";
 export default function DoctorMedicine() {
     const navigate = useNavigate();
     const [selectedProduct, setSelectedProduct] = useState('');
@@ -19,6 +19,13 @@ export default function DoctorMedicine() {
     };
 
     useEffect(() => {
+
+        
+            if(Cookies.get("Doctorlog")==null) {
+              navigate("/loginpage");
+            }
+        
+         
         // Fetch medicine inventory data
         axios.get("http://localhost:8087/store/allstore")
             .then((response) => {

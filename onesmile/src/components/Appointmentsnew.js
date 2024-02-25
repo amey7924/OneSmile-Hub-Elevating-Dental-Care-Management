@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function Appointmentsnew() {
   const navigate = useNavigate();
@@ -113,7 +114,7 @@ export default function Appointmentsnew() {
       })
       .then((response) => {
         console.log(response.data);
-        alert("Appointment booked successfully");
+        toast.success("Appointment booked successfully");
       })
       .catch((error) => {
         console.log(error);

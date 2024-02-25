@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 export default function Appointmentsdetails() {
   const [appointments, setappointments] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if(Cookies.get("Adminlog")==null) {
+      navigate("/loginpage");
+    }
     axios
       .get("http://localhost:8087/appointments/getallappointments")
       .then((response) => {

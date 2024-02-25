@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom';
-
+import Cookies from "js-cookie";
 export default function Dappointmnets() {
   const navigate=useNavigate();
   
@@ -9,6 +9,10 @@ export default function Dappointmnets() {
   const [isCompleted,setcompleted]=useState(true);
   
   useEffect(() => {
+
+    if(Cookies.get("Doctorlog")==null) {
+      navigate("/loginpage");
+    }
       axios.get("http://localhost:8087/appointments/getallappointments").then((response) => {
         console.log(response.data);
         console.log(response.data[0].status)

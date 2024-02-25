@@ -2,12 +2,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from 'js-cookie';
+import { useNavigate } from "react-router-dom";
 export default function UserExamination() {
+  const navigate=useNavigate();
   const [exam, setExaminations] = useState([]);
   const uid=Cookies.get("usersetid");
     console.log(uid);
 
   useEffect(() => {
+    if(Cookies.get("userlogin")==null) {
+      navigate("/loginpage");
+    }
     axios
       .get("http://localhost:8087/examinations/allexamination")
       .then((response) => {

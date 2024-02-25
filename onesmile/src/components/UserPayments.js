@@ -12,6 +12,9 @@ export default function UserPayments() {
   const uid = Cookies.get("usersetid");
   console.log(uid);
   useEffect(() => {
+    if(Cookies.get("userlogin")==null) {
+      navigate("/loginpage");
+    }
     axios
       .get("http://localhost:8087/payments/allpayments")
       .then((response) => {

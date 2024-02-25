@@ -4,9 +4,10 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="container-fluid footer mt-3 mb-3 text-start" style={{ backgroundColor: "pink" }}>
+    <div className="container-fluid footer mb-3 text-start border border-dark-subtle" style={{ background: 'linear-gradient(90deg, rgba(149,247,210,1) 27%, rgba(83,173,218,1) 94%)', fontFamily: 'Roboto Sans-Serif'}}>
       <div className="row">
         <div className="col-md-4">
+          <br />
           <iframe
             title="Google Map"
             className="map"
@@ -21,37 +22,53 @@ export default function Footer() {
         <div className="col-md-8">
           <div className="row">
             <div className="col-lg-4">
-              <h2 className="title">One Smile Dental Clinic</h2>
+              <br />
               <p>
-                <strong>Our Address</strong><br />
-                One Smile Shop no. 13, Opel Acom, NIBM Rd, opposite Kool Homes, Kondhwa, Pune, Maharashtra 411048
+                <h3 className="text" style={{color:'#2c54a2'}}><b>Our Address</b></h3>
+                <h5>One Smile Shop no. 13, Opel Acom, NIBM Rd, opposite Kool Homes, Kondhwa, Pune, Maharashtra 411048</h5>
               </p>
             </div>
             <div className="col-lg-4">
-              <h4>Opening hours</h4>
+              <br />
+              <h3 className="text" style={{color:'#2c54a2'}}><b>Opening Hours</b></h3>
               <p>
-                Monday - Wednesday: 10.00 am to 7.00 pm<br />
-                Thursday: 10.00 am to 7.00 pm<br />
-                Friday: Closed<br />
-                Saturday - Sunday: 10.00 am to 1.00 pm
+                <h5>
+                  <b>Monday: </b>
+                  10.00 am to 7.00 pm<br />
+                  <b>Tuesday: </b>
+                  10.00 am to 7.00 pm<br />
+                  <b>Wednesday: </b>
+                  10.00 am to 7.00 pm<br />
+                  <b>Thursday: </b>
+                  10.00 am to 7.00 pm<br />
+                  <b>Friday: </b>
+                  Closed<br />
+                  <b>Saturday: </b>
+                  10.00 am to 1.00 pm<br />
+                  <b>Sunday: </b>
+                  10.00 am to 1.00 pm
+                </h5>
               </p>
             </div>
             <div className="col-lg-4">
-              <h4>Contact Details</h4>
+              <br />
+              <h3 className="text" style={{color:'#2c54a2'}}><b>Contact Details</b></h3>
               <p>
-                Phone Number:<br />
-                +91 9892781987<br /><br />
-                Email Id :<br />
-                reception.tdb@gmail.com<br /><br />
-                WhatsApp Number:<br />
-                +91 9892781987
+                <h5>
+                  <b>Phone Number: </b><br />
+                  +91 9892781987<br />
+                  <b>Email Id: </b><br />
+                  reception.tdb@gmail.com<br />
+                  <b>WhatsApp Number: </b><br />
+                  +91 9892781987
+                </h5>
               </p>
             </div>
           </div>
         </div>
       </div>
       {/*CopyRight*/}
-      <div className="container-fluid footer text-center text-bg-info mt-3 p-3 "> &copy; One Smile 2024 </div>
+      <div className="container-fluid footer text-center text-bg-secondary mt-3 p-3 "> &copy; One Smile 2024 </div>
     </div>
   );
 }

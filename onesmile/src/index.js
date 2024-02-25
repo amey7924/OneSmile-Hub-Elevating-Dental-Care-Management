@@ -5,15 +5,18 @@ import router from "./routing";
 import Cookie from 'js-cookie'
 
 
+// const handleBeforeUnload = () => {
+//   Cookie.remove('userlogin');
+//   Cookie.remove('usersetid');
+//   Cookie.remove('loginbook');
+  
+//   Cookie.remove("Doctorlog");
+//   Cookie.remove("Adminlog");
+// };
+// window.addEventListener("beforeunload", handleBeforeUnload);
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
-const handleBeforeUnload = () => {
-Cookie.remove('xyz');
-};
-window.addEventListener('beforeunload', handleBeforeUnload);
-
 root.render(
- 
+  
     <RouterProvider router={router}>
       {/* Your application components */}
     </RouterProvider>

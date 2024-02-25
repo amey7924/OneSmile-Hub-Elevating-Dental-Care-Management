@@ -1,8 +1,14 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Cookies from "js-cookie";
 export default function UserReschedule() {
+  useEffect(() =>{
+    if(Cookies.get("userlogin")==null) {
+      navigate("/loginpage");
+    }
+  })
     const [selectedDate, setSelectedDate] = useState(null);
     const [dateError, setDateError] = useState('');
     const [timeError, setTimeError] = useState('');
@@ -86,7 +92,7 @@ export default function UserReschedule() {
             <input type="time" ref={gettime} />
             {timeError && <p style={{ color: 'red' }}>{timeError}</p>}
           </div>
-          <div className="text-center mt-5">
+          <div className="text-center mt-5 mb-2">
             <button
               type="submit"
               className="btn btn-primary btn-w-5"

@@ -6,8 +6,11 @@ import Dheader from "../doctor_components/Dheader";
 import Aheader from "../admin_components/Aheader";
 import { ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Cookie from "js-cookie";  
+import { useEffect } from "react";
 function App() {
-  
+
+
   var g = window.sessionStorage.getItem("abc");
   console.log(g);
 

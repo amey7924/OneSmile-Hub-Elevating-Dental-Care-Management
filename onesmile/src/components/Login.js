@@ -81,15 +81,21 @@ var status=false;
       toast.success("Login successful");
       status=true;
           window.sessionStorage.setItem("abc", "2");
+          Cookie.set("Doctorlog", username.current.value, {
+            expires: 1,
+            secure: true,
+            sameSite: "strict",
+          });
           navigate("/");
           window.location.reload();
+
 
     }
     else if(statusCode=="200" && userdata.role=="admin"){
       toast.success("Login successful");
       status=true;
           window.sessionStorage.setItem("abc", "3");
-          Cookie.set("xyz", username.current.value, {
+          Cookie.set("Adminlog", username.current.value, {
             expires: 1,
             secure: true,
             sameSite: "strict",
@@ -97,7 +103,7 @@ var status=false;
         // Call notify with message
           navigate("/adminhomepage");
           window.location.reload();
-
+      
     }
     else if(statusCode==404){
       toast.error("User not  found");

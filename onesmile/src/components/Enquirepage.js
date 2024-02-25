@@ -45,23 +45,23 @@ export default function Enquirepage() {
   };
 
   return (
-    <div style={{ margin: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-        <h2 style={{ color: 'blue' }}>ENQUIRY FORM</h2>
+    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+      <div style={{ textAlign: 'center', paddingBottom: '20px' }}>
+      <h1 className="h1 text-center m-4" style={{ fontFamily: 'Roboto Sans-Serif', color: '#800080' }}><b>Enquiry Form</b></h1>
       </div>
       <div style={{ display: 'flex' }}>
-        <div style={{ flex: '1', border: '1px solid #ccc', padding: '10px' }}>
+        <div style={{ flex: '1', border: '1px solid #ccc', padding: '5px' }}>
           <img
             src='https://static.showit.co/1200/NVyu1HUlT1i7YcsOdIg2Sg/84619/fmc-dental-clinic-background.png'
             alt="Background"
             style={{ width: '100%' }}
           />
         </div>
-        <div style={{ flex: '1', border: '1px solid #ccc', padding: '10px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ flex: '1', border: '1px solid #ccc', paddingt: '10px',fontFamily: 'Roboto Sans-Serif', color: '#800080'}}>
+          <div style={{ display: 'flex', flexDirection: 'column', marginTop: '40px' }}>
             <div style={{ display: 'flex', marginBottom: '10px' }}>
               <div style={{ flex: '1', textAlign: 'center', marginRight: '10px' }}>
-                <h4>Your Name:</h4>
+                <h4><b>Your Name:</b></h4>
               </div>
               <div style={{ flex: '1' }}>
                 <input id="name" type="text" style={{ width: '100%' }} onChange={(e) => setName(e.target.value)} />
@@ -70,7 +70,7 @@ export default function Enquirepage() {
 
             <div style={{ display: 'flex', marginBottom: '10px' }}>
               <div style={{ flex: '1', textAlign: 'center', marginRight: '10px' }}>
-                <h4>Email:</h4>
+                <h4><b>Email:</b></h4>
               </div>
               <div style={{ flex: '1' }}>
                 <input id="email" type="text" style={{ width: '100%' }} onChange={(e) => setEmail(e.target.value)} />
@@ -78,7 +78,7 @@ export default function Enquirepage() {
             </div>
             <div style={{ display: 'flex', marginBottom: '10px' }}>
               <div style={{ flex: '1', textAlign: 'center', marginRight: '10px' }}>
-                <h4>Contact:</h4>
+                <h4><b>Contact:</b></h4>
               </div>
               <div style={{ flex: '1' }}>
                 <input id="contact" type="text" style={{ width: '100%' }} onChange={(e) => setContact(e.target.value)} />
@@ -87,7 +87,7 @@ export default function Enquirepage() {
 
             <div style={{ display: 'flex', marginBottom: '10px' }}>
               <div style={{ flex: '1', textAlign: 'center', marginRight: '10px' }}>
-                <h4>Message:</h4>
+                <h4><b>Message:</b></h4>
               </div>
               <div style={{ flex: '1' }}>
                 <textarea id="dat" style={{ width: '100%' }} onChange={(e) => setMessage(e.target.value)} />
@@ -95,7 +95,7 @@ export default function Enquirepage() {
             </div>
             
             <div style={{ textAlign: 'center' , marginTop:'20px'}}>
-              <button onClick={handleAction} type="button" className="btn btn-success">Submit</button>
+              <button onClick={handleAction} type="button" className="btn btn-primary">Submit</button>
             </div>
           </div>
         </div>

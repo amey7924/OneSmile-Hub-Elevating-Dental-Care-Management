@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 export default function AllPayments() {
+  const navigate = useNavigate();
   const [payments, setpayments] = useState([]);
 
   useEffect(() => {
+    if(Cookies.get("Adminlog")==null) {
+      navigate("/loginpage");
+    }
+
     axios
       .get("http://localhost:8087/payments/allpayments")
       .then((response) => {

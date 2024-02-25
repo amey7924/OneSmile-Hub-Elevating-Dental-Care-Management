@@ -2,12 +2,18 @@ import React, { useEffect, useState } from 'react';
 import '../App.css';
 import axios from 'axios';
 import Cookies from "js-cookie";
+import { useNavigate } from 'react-router-dom';
+
 
 export default function MyProfile() {
+    const navigate=useNavigate();
     const [users , setUsers] = useState([]);
    // var uid = localStorage.getItem('userid');
     var uid=Cookies.get("usersetid");
     useEffect(() => {
+        if(Cookies.get("userlogin")==null) {
+            navigate("/loginpage");
+          }
         axios.get("http://localhost:8087/user/oneuser/"+uid)
             .then((response) => {
                 console.log(response.data);

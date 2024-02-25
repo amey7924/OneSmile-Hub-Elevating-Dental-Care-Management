@@ -14,6 +14,9 @@ export default function UserAppointments() {
     const [appointments, setAppointments] = useState([]);
     const navigate = useNavigate();
     useEffect(() => {
+        if(Cookies.get("userlogin")==null) {
+            navigate("/loginpage");
+          }
         axios
             .get("http://localhost:8087/appointments/getallappointments")
             .then((response) => {

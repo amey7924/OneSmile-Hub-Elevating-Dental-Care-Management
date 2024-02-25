@@ -5,12 +5,11 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Containts from "./components/Content";
 import Treatments from "./components/Treatments";
-import Appointments from "./components/Appoinments";
-import Admin from "./components/Admin";
+
 import Appointmentsnew from "./components/Appointmentsnew";
 import Dheader from "./doctor_components/Dheader";
 import Adminhome from "./admin_components/Adminhome";
-import Aheader from "./admin_components/Aheader";
+
 import Dappointmnets from "./doctor_components/Dappointmnets";
 import Examination from "./doctor_components/Examination";
 import AppointmentReschedule from "./doctor_components/AppointmentReschedule";
@@ -30,6 +29,8 @@ import UserExamination from "./components/UserExamination";
 import UserPayments from "./components/UserPayments";
 import UserReschedule from "./components/UserReschedule";
 import PaymentQR from "./components/PaymentQR";
+import Feedback from "./components/Feedback";
+import Show_feedback from "./admin_components/Show_feedback";
 
 
 const router = createBrowserRouter([
@@ -58,10 +59,6 @@ const router = createBrowserRouter([
       {
         path:"/appointmentspage",
         element:<Appointmentsnew/>
-
-      },  {
-        path:"/adminpage",
-        element:<Admin/>
 
       },
       {
@@ -149,6 +146,13 @@ const router = createBrowserRouter([
       }, {
         path:"/PaymentQRpage",
         element:<PaymentQR/>
+      },{
+        path:"/Feedbackpage",
+        element:<Feedback/>
+      },
+      {
+        path:"/showFeedbackpage",
+        element:<Show_feedback/>
       },
       
       

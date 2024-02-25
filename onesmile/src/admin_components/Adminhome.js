@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 export default function Adminhome() {
+  const navigate = useNavigate();
   const imageStyle = {
     filter: 'blur(2px)',
     width: '100%',
@@ -26,16 +28,26 @@ export default function Adminhome() {
     textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)',
   };
 
-  useEffect(() => {
+  
+    useEffect(() => {
+      // if(Cookies.get("Adminlog")==null) {
+      //   navigate("/loginpage");
+      // }
+  });
    
-  }, []);
+ 
   
 
   return (
-    <div className="row row-cols-1 row-cols-md-2 g-6">
+
+    <div className='container'>
+
+
+   
+    <div className=" row row-cols-1 row-cols-md-2 g-6">
       
-      <div className="col">
-        <div className="card" style={cardStyle}>
+      <div className="col" >
+        <div className="card mt-2" style={cardStyle}>
           <Link to="/AdminMedicalStorepage">
             <img
               src="https://uniquekiosk.com/wp-content/uploads/2020/08/39-10-1536x877.jpg"
@@ -50,13 +62,14 @@ export default function Adminhome() {
         </div>
       </div>
       <div className="col">
-        <div className="card" style={cardStyle}>
+        <div className="card mt-2" style={cardStyle}>
           <Link to="/Userdetailspage">
             <img
               src="https://th.bing.com/th?id=OIP.wRtvON_8JKRQghdROw5QvQHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.1&pid=3.1&rm=2"
               className="card-img-top"
               alt="User Details"
               style={imageStyle}
+              width={"auto"}
             />
             <div style={cardTitleStyle}>
               <h5 className="card-title">User Details</h5>
@@ -65,7 +78,7 @@ export default function Adminhome() {
         </div>
       </div>
       <div className="col">
-        <div className="card" style={cardStyle}>
+        <div className="card mt-2" style={cardStyle}>
           <Link to="/Appointmentdetailspage">
             <img
               src="https://th.bing.com/th/id/OIP.BR4bmCAe_QWfi09YzMhiHgHaFW?rs=1&pid=ImgDetMain"
@@ -80,7 +93,7 @@ export default function Adminhome() {
         </div>
       </div>
       <div className="col">
-        <div className="card" style={cardStyle}>
+        <div className="card mt-2" style={cardStyle}>
           <Link to="/Examinationdetailspage">
             <img
               src="https://deangelisfamilydentistry.com/wp-content/uploads/when-your-child-should-have-their-first-dental-appointment-1.jpeg"
@@ -95,7 +108,7 @@ export default function Adminhome() {
         </div>
       </div>
       <div className="col">
-        <div className="card" style={cardStyle}>
+        <div className="card mt-2" style={cardStyle}>
           <Link to="/Allpaymentspage">
             <img
               src="https://cdn1.vectorstock.com/i/1000x1000/75/20/digital-payment-design-vector-4217520.jpg"
@@ -110,7 +123,7 @@ export default function Adminhome() {
         </div>
       </div>
       <div className="col">
-        <div className="card" style={cardStyle}>
+        <div className="card mt-2 mb-2" style={cardStyle}>
           <Link to="/EnquiryDetailspage">
             <img
               src="https://www.freeiconspng.com/uploads/inquiry-icon-png-25.png"
@@ -124,6 +137,7 @@ export default function Adminhome() {
           </Link>
         </div>
       </div>
+    </div>
     </div>
   );
 }

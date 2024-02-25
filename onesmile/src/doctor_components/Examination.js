@@ -2,12 +2,16 @@ import React, { useEffect, useRef, useState } from "react";
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import Cookies from "js-cookie";
 export default function Examination() {
 
   const[getpendingpay,setpendingpay]=useState('');
     
   useEffect(() => {
+    if(Cookies.get("Doctorlog")==null) {
+      navigate("/loginpage");
+    }
+
     axios
       .get("http://localhost:8087/examinations/pendingcharges/"+pendingpayuid)
       .then((response) => {

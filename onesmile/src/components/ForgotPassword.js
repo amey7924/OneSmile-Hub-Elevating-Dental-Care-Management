@@ -17,7 +17,7 @@ export default function ForgotPassword() {
   const handleQuestion = (event) => {
     setSelectedQuestion(event.target.value);
   };
-  
+  console.log(getuser)
   useEffect(() => {
     axios
       .get("http://localhost:8087/user/alluser")
@@ -32,26 +32,30 @@ export default function ForgotPassword() {
 
   let emailFound = false;
   const handleFormSubmit = (event) => {
-    event.preventDefault();
+event.preventDefault();
     
+var counter=0;
     for(let i=0 ; i<getuser.length ; i++) {
-      var counter=0;
+
+      if(getuser[i].email!==email||selectedQuestion!==getuser[i].question||answer!==getuser[i].answer){
+        counter++;
+      }
     
-      console.log(getuser[i].email);
-      if(getuser[i].email!==email){
-      counter++;
-      console.log(counter);
-      }
-      if(selectedQuestion!==getuser[i].question){
-        console.log(selectedQuestion);
-        counter++;
-        console.log(counter);
-      }
-      if(answer!==getuser[i].answer){
-        console.log(answer);
-        counter++;
-        console.log(counter);
-      }
+      // console.log(getuser[i].email);
+      // if(getuser[i].email!==email){
+      // counter++;
+      // console.log(counter);
+      // }
+      // if(selectedQuestion!==getuser[i].question){
+      //   console.log(selectedQuestion);
+      //   counter++;
+      //   console.log(counter);
+      // }
+      // if(answer!==getuser[i].answer){
+      //   console.log(answer);
+      //   counter++;
+      //   console.log(counter);
+      // }
     }
 
     console.log(counter);

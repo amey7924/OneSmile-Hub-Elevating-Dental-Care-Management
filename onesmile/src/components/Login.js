@@ -141,7 +141,7 @@ var status=false;
                       type="email"
                       id="typeEmailX-2"
                       className="form-control form-control-lg"
-                      placeholder="Email"
+                      placeholder="User name"
                       ref={username}
                     />
                   </div>

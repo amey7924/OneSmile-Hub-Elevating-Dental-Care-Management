@@ -4,7 +4,8 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="container-fluid footer mb-3 text-start border border-dark-subtle" style={{ background: 'linear-gradient(90deg, rgba(149,247,210,1) 27%, rgba(83,173,218,1) 94%)', fontFamily: 'Roboto Sans-Serif'}}>
+    
+    <div className="container-fluid footer mb-3 text-start border border-dark-subtle position-relative bottom-0  " style={{ background: 'linear-gradient(90deg, rgba(149,247,210,1) 27%, rgba(83,173,218,1) 94%)', fontFamily: 'Roboto Sans-Serif'}}>
       <div className="row">
         <div className="col-md-4">
           <br />

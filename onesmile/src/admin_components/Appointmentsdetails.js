@@ -22,8 +22,8 @@ export default function Appointmentsdetails() {
   }, []);
   return (
     <>
-      <div className="container">
-        <h1>Appointment Details</h1>
+      <div className="container" style={{ paddingTop:'10px',fontFamily: 'Roboto Sans-Serif', color: '#2c54a2' }}>
+      <h2 style={{textAlign:'center'}}><b>Appointment Details</b></h2>
         <div className="row">
           <table class="table table-striped">
             <thead>

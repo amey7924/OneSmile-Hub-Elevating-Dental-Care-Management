@@ -57,11 +57,11 @@ export default function AdminMedicalStore() {
   };
   return (
     <>
-      <div className="container mt-3">
+      <div className="container mt-3" style={{ paddingTop:'10px',fontFamily: 'Roboto Sans-Serif', color: '#2c54a2' }}>
         <div className="row">
           <div className="d-flex flex-wrap">
             <div className="col-lg-6">
-              <h3>Medicine Inventory</h3>
+              <h2 style={{textAlign:'center'}}><b>Medicine Inventory</b></h2>
               <div className="table-responsive me-5">
                 <table className="table mt-1">
                   <thead>
@@ -89,7 +89,7 @@ export default function AdminMedicalStore() {
               <div className="vr"></div>
             </div>
             <div className="col-lg-5 ms-5">
-              <h3>Requisition Table</h3>
+              <h2 style={{textAlign:'center'}}><b>Requisition Table</b></h2>
               <div className="table-responsive">
                 <table className="table">
                   <thead>

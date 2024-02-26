@@ -56,7 +56,7 @@ export default function Adminhome() {
               style={imageStyle}
             />
             <div style={cardTitleStyle}>
-              <h5 className="card-title">Medicine Store</h5>
+              <h4 className="card-title" style={{color:"white" }}><b>Medicine Store</b></h4>
             </div>
           </Link>
         </div>
@@ -72,7 +72,7 @@ export default function Adminhome() {
               width={"auto"}
             />
             <div style={cardTitleStyle}>
-              <h5 className="card-title">User Details</h5>
+              <h4 className="card-title" style={{color:"white"}}><b>User Details</b></h4>
             </div>
           </Link>
         </div>
@@ -81,13 +81,13 @@ export default function Adminhome() {
         <div className="card mt-2" style={cardStyle}>
           <Link to="/Appointmentdetailspage">
             <img
-              src="https://th.bing.com/th/id/OIP.BR4bmCAe_QWfi09YzMhiHgHaFW?rs=1&pid=ImgDetMain"
+              src="https://images-na.ssl-images-amazon.com/images/I/91NlxA%2BwxyL.jpg"
               className="card-img-top"
               alt="Medicine Store"
               style={imageStyle}
             />
             <div style={cardTitleStyle}>
-              <h5 className="card-title">Appointment Details</h5>
+              <h4 className="card-title" style={{color:"white" }}><b>Appointment Details</b></h4>
             </div>
           </Link>
         </div>
@@ -102,7 +102,7 @@ export default function Adminhome() {
               style={imageStyle}
             />
             <div style={cardTitleStyle}>
-              <h5 className="card-title">Examination Details</h5>
+              <h4 className="card-title" style={{color:"white"}}><b>Examination Details</b></h4>
             </div>
           </Link>
         </div>
@@ -111,13 +111,13 @@ export default function Adminhome() {
         <div className="card mt-2" style={cardStyle}>
           <Link to="/Allpaymentspage">
             <img
-              src="https://cdn1.vectorstock.com/i/1000x1000/75/20/digital-payment-design-vector-4217520.jpg"
+              src="https://www.cambodiacreative.com/wp-content/uploads/2019/06/cambodia-online-payment-getway-ecommerce-website-design-768x436.jpg?08257c&08257c"
               className="card-img-top"
               alt="Medicine Store"
               style={imageStyle}
             />
             <div style={cardTitleStyle}>
-              <h5 className="card-title">Payment Details</h5>
+              <h4 className="card-title"style={{color:"white" }}><b>Payment Details</b></h4>
             </div>
           </Link>
         </div>
@@ -132,7 +132,7 @@ export default function Adminhome() {
               style={imageStyle}
             />
             <div style={cardTitleStyle}>
-              <h5 className="card-title">Enquiry Details</h5>
+              <h4 className="card-title"style={{color:"white" }}><b>Enquiry Details</b></h4>
             </div>
           </Link>
         </div>

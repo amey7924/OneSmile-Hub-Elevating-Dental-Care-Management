@@ -24,8 +24,8 @@ export default function AllPayments() {
   }, []);
   return (
     <>
-      <div className="container">
-        <h1>Payments Details</h1>
+        <div className="container" style={{ paddingTop:'10px',fontFamily: 'Roboto Sans-Serif' }}>
+        <h2 style={{textAlign:'center', color: '#2c54a2'}}><b>Payment Details</b></h2>
         <div className="row">
           <table class="table table-striped">
             <thead>

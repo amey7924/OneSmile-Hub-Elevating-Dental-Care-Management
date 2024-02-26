@@ -109,6 +109,22 @@ export default function Adddoctors() {
       .then((response) => {
         console.log(response.data);
         alert("doctor added successfully");
+        // navigate("/adminhomepage");
+        // window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      axios
+      .post(`http://localhost:8087/Mail/send/${email.current.value}`, {
+        subject: "Login Credentials",
+        
+        message: `User Name: ${username.current.value}\nPassword: ${password.current.value}`
+        
+      })
+      .then((response) => {
+        console.log(response.data);
+        alert("Login Details Sent successfully");
         navigate("/adminhomepage");
         window.location.reload();
       })

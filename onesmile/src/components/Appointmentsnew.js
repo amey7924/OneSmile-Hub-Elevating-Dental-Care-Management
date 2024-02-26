@@ -3,8 +3,10 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { wait } from "@testing-library/user-event/dist/utils";
 
 export default function Appointmentsnew() {
+  const [getcode,setstatuscode]=useState('');
   const navigate = useNavigate();
   const backgroundImage =
     "https://png.pngtree.com/back_origin_pic/04/54/70/2cd697ae026b76105a4503dcc7dd7c31.jpg";
@@ -104,7 +106,6 @@ export default function Appointmentsnew() {
     } else {
       setTimeError('');
     }
-
     axios
       .post("http://localhost:8087/appointments/addappointment", {
         date: appdate.current.value,
@@ -114,12 +115,36 @@ export default function Appointmentsnew() {
       })
       .then((response) => {
         console.log(response.data);
-        toast.success("Appointment booked successfully");
+        setstatuscode(response.status);
+ 
+      
+       
       })
       .catch((error) => {
         console.log(error);
+        setstatuscode(error.response.status);
       });
+      console.log(getcode);
+    
+
+
+      
   };
+  if (getcode=="409") {
+   toast.error("please select different  date or time ");
+   setTimeout(function() {
+     window.location.reload();
+   
+   }, 5000);
+  } 
+  if (getcode=="200"){
+   toast.success("Appointments booked successfully");
+   setTimeout(function() {
+     window.location.reload();
+   
+   }, 5000);
+  
+  }
 
   const handleCancel = () => {
     navigate("/");

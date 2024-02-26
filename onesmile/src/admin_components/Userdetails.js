@@ -34,8 +34,8 @@ export default function Userdetails() {
 
   return (
     <>
-      <div className="container">
-        <h1>User Details</h1>
+    <div className='container' style={{ paddingTop: '10px', fontFamily: 'Roboto Sans-Serif', color: '#2c54a2' }}>
+        <h2 style={{ textAlign: 'center' }}><b>User Details</b></h2>
         <div className="row">
           <table class="table table-striped">
             <thead>
